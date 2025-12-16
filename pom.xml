@@ -13,6 +13,8 @@
         <module>spring-reflect</module>
         <module>spring-ioc</module>
         <module>spring-aop</module>
+        <module>spring-junit</module>
+        <module>spring-jdbc-tx</module>
     </modules>
 
     <properties>
