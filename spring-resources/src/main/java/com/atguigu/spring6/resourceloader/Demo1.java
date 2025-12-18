@@ -19,7 +19,7 @@ public class Demo1 {
      *
      *
      * */
-    @Test  
+    @Test
     public void test() {
         ApplicationContext context = new ClassPathXmlApplicationContext();
         Resource resource = context.getResource("atguigu.txt");
