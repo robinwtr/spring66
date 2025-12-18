@@ -6,12 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring-aop" />
+        <module name="spring-resources" />
         <module name="spring-jdbc-tx" />
         <module name="spring-reflect" />
         <module name="spring-ioc" />
-        <module name="spring-first" />
         <module name="spring-junit" />
+        <module name="spring-aop" />
+        <module name="spring-first" />
       </profile>
     </annotationProcessing>
   </component>
