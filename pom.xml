@@ -16,6 +16,7 @@
         <module>spring-junit</module>
         <module>spring-jdbc-tx</module>
         <module>spring-resources</module>
+        <module>MyBatis</module>
     </modules>
 
     <properties>

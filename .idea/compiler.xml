@@ -11,6 +11,7 @@
         <module name="spring-reflect" />
         <module name="spring-ioc" />
         <module name="spring-junit" />
+        <module name="MyBatis" />
         <module name="spring-aop" />
         <module name="spring-first" />
       </profile>
