@@ -2,6 +2,8 @@ package com.atguigu.mybatis.mapper1;
 
 import com.atguigu.mybatis.pojo1.User;
 
+import java.util.List;
+
 public interface UserMapper {
 
     /**
@@ -16,5 +18,22 @@ public interface UserMapper {
     /*
     * 添加用户信息
     * */
-    int insertUeser();
+    int insertUser();
+    /*
+    * 修改用户信息
+    * */
+    void updateUser();
+    /**
+     * 删除用户信息
+     */
+    void deleteUser();
+
+    /**
+     * 根据用户id查询用户信息
+     */
+    User getUserById();
+    /**
+     * 查询所有用户信息
+     */
+    List<User> getUserList();
 }

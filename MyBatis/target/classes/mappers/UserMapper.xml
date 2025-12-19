@@ -6,8 +6,31 @@
 
 
 <!--    int insertUeser();-->
-    <insert id="insertUeser">
+    <insert id="insertUser">
         insert into t_user values(null,'admin','123456',23,'男',"1845985019@qq.com")
     </insert>
 
+<!--    void updateUeser();-->
+    <update id="updateUser">
+        update t_user set username="root" where id = 2
+    </update>
+<!--    void deleteUser();-->
+    <delete id="deleteUser">
+        delete from t_user where id=4
+    </delete>
+
+<!--    User getUserById();-->
+    <!--
+        查询功能的标签必须设置resultType或resultMap
+        resultType: 设置默认的映射关系 实体类的属性名要和数据库表中的字段名保持一致
+        resultMap: 设置自定义的映射关系 多对一 一对多
+    -->
+    <select id="getUserById" resultType="com.atguigu.mybatis.pojo1.User">
+        select * from t_user where id = 2
+    </select>
+
+<!--    List<User> getUserList();-->
+    <select id="getUserList" resultType="com.atguigu.mybatis.pojo1.User">
+        select * from t_user
+    </select>
 </mapper>
