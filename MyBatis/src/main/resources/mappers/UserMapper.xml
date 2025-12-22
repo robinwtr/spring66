@@ -25,12 +25,12 @@
         resultType: 设置默认的映射关系 实体类的属性名要和数据库表中的字段名保持一致
         resultMap: 设置自定义的映射关系 多对一 一对多
     -->
-    <select id="getUserById" resultType="com.atguigu.mybatis.pojo1.User">
+    <select id="getUserById" resultType="User">
         select * from t_user where id = 2
     </select>
 
 <!--    List<User> getUserList();-->
-    <select id="getUserList" resultType="com.atguigu.mybatis.pojo1.User">
+    <select id="getUserList" resultType="User">
         select * from t_user
     </select>
 </mapper>

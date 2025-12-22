@@ -13,6 +13,7 @@
         <module name="spring-junit" />
         <module name="MyBatis" />
         <module name="spring-aop" />
+        <module name="MyBatis_Demo1" />
         <module name="spring-first" />
       </profile>
     </annotationProcessing>
