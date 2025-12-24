@@ -2,6 +2,27 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="">
+<mapper namespace="com.atguigu.mybatis.mapper.SelectMapper">
 
+
+    <!--User selectUserById(@Param("id") Integer id);-->
+    <select id="selectUserById"  resultType="User">
+        select * from t_user where id=#{id}
+    </select>
+    <!--List<User> selectAllUser();-->
+    <select id="selectAllUser" resultType="User">
+        select * from t_user
+    </select>
+    <!--Integer getCount();-->
+    <select id="getCount" resultType="java.lang.Integer">
+        select count(*) from t_user
+    </select>
+    <!--Map<String,Object> getUserByIdToMap(@Param("id")  Integer id);-->
+    <select id="getUserByIdToMap" resultType="Map">
+        select * from t_user where id=#{id}
+    </select>
+    <!--List<Map<String,Object>> getAllUserToMap();-->
+    <select id="getAllUserToMap" resultType="Map">
+        select *  from t_user
+    </select>
 </mapper>
