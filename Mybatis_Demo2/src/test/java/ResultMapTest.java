@@ -29,7 +29,9 @@ public class ResultMapTest {
 
     /**
      * 处理多对一的映射关系：
-     * a.
+     * a. 级联属性赋值
+     * b. association标签  专门处理多对一的关系
+     *
      */
     @Test
     public void test() {
@@ -44,7 +46,15 @@ public class ResultMapTest {
     public void test2() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
-        Emp emp = mapper.selectEmpAndDeptById(1);
+        Emp emp = mapper.selectEmpAndDeptById(3);
+        System.out.println(emp);
+    }
+
+    @Test
+    public void test3() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
+        Emp emp = mapper.selectEmpAndDeptByStepOne(4);
         System.out.println(emp);
     }
 }
