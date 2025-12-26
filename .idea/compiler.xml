@@ -11,6 +11,7 @@
         <module name="spring-reflect" />
         <module name="spring-ioc" />
         <module name="spring-junit" />
+        <module name="Mybatis_Demo2" />
         <module name="MyBatis" />
         <module name="spring-aop" />
         <module name="MyBatis_Demo1" />

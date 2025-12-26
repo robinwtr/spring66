@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.mybatis.mapper.EmpMapper">
+
+
+    <resultMap id="empResultMap" type="Emp">
+        <id property="eid" column="eid"></id>
+        <result property="empName" column="emp_name"></result>
+        <result property="age" column="age"></result>
+        <result property="sex" column="sex"></result>
+        <result property="email" column="email"></result>
+    </resultMap>
+
+    <!--List<Emp> selectAllEmp();-->
+    <select id="selectAllEmp" resultMap="empResultMap">
+        select * from t_emp
+    </select>
+<!--    <select id="selectAllEmp" resultType="Emp">-->
+<!--        select eid,emp_name empName,age,sex,email from t_emp-->
+<!--    </select>-->
+    <!--Emp selectEmpAndDeptById(@Param("eid") Integer eid);-->
+    <!--处理多对一映射关系的方式一：级联属性赋值-->
+    <resultMap id="empAndDeptResultMapOne" type="Emp">
+        <id property="eid" column="eid"></id>
+        <result property="empName" column="emp_name"></result>
+        <result property="age" column="age"></result>
+        <result property="sex" column="sex"></result>
+        <result property="email" column="email"></result>
+        <result property="dept.did" column="did"></result>
+        <result property="dept.deptName" column="dept_name"></result>
+    </resultMap>
+    <select id="selectEmpAndDeptById"  resultMap="empAndDeptResultMapOne">
+        select * from t_emp left join t_dept on t_emp.did  = t_dept.did where  t_emp.eid  = #{eid}
+    </select>
+</mapper>

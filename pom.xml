@@ -18,6 +18,7 @@
         <module>spring-resources</module>
         <module>MyBatis</module>
         <module>MyBatis_Demo1</module>
+        <module>Mybatis_Demo2</module>
     </modules>
 
     <properties>
