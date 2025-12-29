@@ -6,7 +6,13 @@
     <properties resource="jdbc.properties"></properties>
 
     <settings>
+        <!--将_自动映射为驼峰，emp_name=empName -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--开启延迟加载-->
+        <!--
+            他的作用就是当前访问的是哪个sql就去执行相应的sql附加的就不会执行
+        -->
+        <setting name="lazyLoadingEnabled" value="true"/>
     </settings>
 
     <typeAliases>

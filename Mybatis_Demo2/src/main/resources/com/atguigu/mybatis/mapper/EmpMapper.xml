@@ -51,6 +51,11 @@
     <select id="selectEmpAndDeptByStepOne" resultMap="selectEmpAndDeptByStepResultMap">
         select * from t_emp where eid=#{eid}
     </select>
+    <!--
+    fetchType:当开启了全局的延迟加载之后，可通过此属性手动控制延迟加载的效果
+    lazy 关闭全局
+    eager
+    -->
     <resultMap id="selectEmpAndDeptByStepResultMap" type="Emp">
         <id property="eid" column="eid"></id>
         <result property="empName" column="emp_name"></result>
@@ -59,7 +64,9 @@
         <result property="email" column="email"></result>
         <association property="dept"
                      select="com.atguigu.mybatis.mapper.DeptMapper.selectEmpAndDeptByStepTwo"
-                     column="did"></association>
+                     column="did"
+                     fetchType="lazy"
+        ></association>
     </resultMap>
 
 </mapper>

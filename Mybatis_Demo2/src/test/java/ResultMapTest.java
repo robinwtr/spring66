@@ -1,6 +1,10 @@
+import com.alibaba.druid.sql.dialect.sqlserver.ast.SQLServerOutput;
+import com.atguigu.mybatis.mapper.DeptMapper;
 import com.atguigu.mybatis.mapper.EmpMapper;
+import com.atguigu.mybatis.pojo.Dept;
 import com.atguigu.mybatis.pojo.Emp;
 import com.atguigu.mybatis.utils.SqlSessionUtils;
+import jdk.swing.interop.SwingInterOpUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +35,11 @@ public class ResultMapTest {
      * 处理多对一的映射关系：
      * a. 级联属性赋值
      * b. association标签  专门处理多对一的关系
+     * c. 分步查询
      *
+     * 处理一对多的映射关系
+     * a. collection
+     * b. 分布查询
      */
     @Test
     public void test() {
@@ -55,6 +63,16 @@ public class ResultMapTest {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         EmpMapper mapper = sqlSession.getMapper(EmpMapper.class);
         Emp emp = mapper.selectEmpAndDeptByStepOne(4);
-        System.out.println(emp);
+        System.out.println(emp.getEmpName());
+        System.out.println("=======================");
+        System.out.println(emp.getDept());
+    }
+
+    @Test
+    public void test4() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DeptMapper mapper = sqlSession.getMapper(DeptMapper.class);
+        Dept dept = mapper.selectDeptAndEmp(1);
+        System.out.println(dept);
     }
 }
