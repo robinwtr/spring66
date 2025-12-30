@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring-resources" />
+        <module name="MyBatis_MBG" />
         <module name="spring-jdbc-tx" />
         <module name="spring-reflect" />
         <module name="spring-ioc" />
