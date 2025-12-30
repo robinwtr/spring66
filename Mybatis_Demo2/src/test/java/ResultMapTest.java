@@ -1,5 +1,6 @@
 import com.alibaba.druid.sql.dialect.sqlserver.ast.SQLServerOutput;
 import com.atguigu.mybatis.mapper.DeptMapper;
+import com.atguigu.mybatis.mapper.DynamicSqlMapper;
 import com.atguigu.mybatis.mapper.EmpMapper;
 import com.atguigu.mybatis.pojo.Dept;
 import com.atguigu.mybatis.pojo.Emp;
@@ -39,7 +40,7 @@ public class ResultMapTest {
      *
      * 处理一对多的映射关系
      * a. collection
-     * b. 分布查询
+     * b. 分步查询
      */
     @Test
     public void test() {
@@ -74,5 +75,29 @@ public class ResultMapTest {
         DeptMapper mapper = sqlSession.getMapper(DeptMapper.class);
         Dept dept = mapper.selectDeptAndEmp(1);
         System.out.println(dept);
+    }
+
+    @Test
+    public void test5() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DeptMapper mapper = sqlSession.getMapper(DeptMapper.class);
+        Dept dept = mapper.getDeptAndEmpByStepOne(3);
+        System.out.println(dept);
+    }
+
+
+    /**
+     * 动态sql：
+     * 1. if：根据标签中test属性所对应的表达式决定标签中的内容是否需要拼接到sql语句中
+     *
+     */
+    @Test
+    public void test6() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DynamicSqlMapper mapper = sqlSession.getMapper(DynamicSqlMapper.class);
+        List<Emp> empByCondition = mapper.getEmpByCondition(new Emp(null, "", 32, "男", "2@qq.com"));
+        for (Emp emp : empByCondition) {
+            System.out.println(emp);
+        }
     }
 }

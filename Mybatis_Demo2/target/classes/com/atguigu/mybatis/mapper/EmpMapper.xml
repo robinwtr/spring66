@@ -69,4 +69,8 @@
         ></association>
     </resultMap>
 
+    <!--List<Emp> getDeptAndEmpByStepTwo(@Param("did") Integer did);-->
+    <select id="getDeptAndEmpByStepTwo" resultType="Emp">
+        select * from t_emp where did=#{did}
+    </select>
 </mapper>

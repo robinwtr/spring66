@@ -8,5 +8,11 @@ public interface DeptMapper {
     Dept selectEmpAndDeptByStepTwo(@Param("did") Integer did);
     //部门以及部门中所有员工信息
     Dept selectDeptAndEmp(@Param("did") Integer did);
+    /**
+     * 通过分布查询查询部门以及部门中所有的员工信息
+     * 分布查询第一步：查询部门信息
+     */
+     Dept getDeptAndEmpByStepOne(@Param("did") Integer did);
+
 
 }
