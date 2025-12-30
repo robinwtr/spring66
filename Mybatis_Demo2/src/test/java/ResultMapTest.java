@@ -9,6 +9,7 @@ import jdk.swing.interop.SwingInterOpUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ResultMapTest {
@@ -89,15 +90,57 @@ public class ResultMapTest {
     /**
      * 动态sql：
      * 1. if：根据标签中test属性所对应的表达式决定标签中的内容是否需要拼接到sql语句中
+     * 2. where:
+     * where标签中有内容时 会自动生成where关键字，并且将内容前多余的and或or去掉
+     * where标签中没有内容时 where标签没有任何效果 内容后的and和or不能去掉
+     * 3. trim标签
+     * prefix/suffix：将trim标签中内容前面或后面添加指定内容
+     * prefixOverrides/suffixOverrides: 将trim标签前面后面添加去掉某些内容
+     * 4. choose when otherwise 相当于 if...else if...else
+     * when至少有一个
+     * otherwise至多有一个
+     * 5. foreach
      *
      */
     @Test
     public void test6() {
         SqlSession sqlSession = SqlSessionUtils.getSqlSession();
         DynamicSqlMapper mapper = sqlSession.getMapper(DynamicSqlMapper.class);
-        List<Emp> empByCondition = mapper.getEmpByCondition(new Emp(null, "", 32, "男", "2@qq.com"));
+        List<Emp> empByCondition = mapper.getEmpByCondition(new Emp(null, "", 32, "", ""));
         for (Emp emp : empByCondition) {
             System.out.println(emp);
         }
+    }
+
+    @Test
+    public void test7() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DynamicSqlMapper mapper = sqlSession.getMapper(DynamicSqlMapper.class);
+        List<Emp> empByCondition = mapper.getEmpByChoose(new Emp(null, "", 32, "", ""));
+        for (Emp emp : empByCondition) {
+            System.out.println(emp);
+        }
+    }
+
+    @Test
+    public void test8() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DynamicSqlMapper mapper = sqlSession.getMapper(DynamicSqlMapper.class);
+        int i = mapper.deleteMoreByArray(new Integer[]{6, 7, 8});
+        System.out.println(i);
+    }
+
+    @Test
+    public void test9() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        DynamicSqlMapper mapper = sqlSession.getMapper(DynamicSqlMapper.class);
+        Emp emp1 = new Emp(null, "ZZ", 23, "男", "0@qq.com");
+        Emp emp2 = new Emp(null, "grf", 25, "男", "9@qq.com");
+        Emp emp3 = new Emp(null, "dyy", 24, "女", "8@qq.com");
+        Emp emp4 = new Emp(null, "zjx", 23, "女", "7@qq.com");
+        Emp emp5 = new Emp(null, "wtr", 23, "男", "6@qq.com");
+        List<Emp> list = Arrays.asList(emp1, emp2, emp3, emp4, emp5);
+        int i = mapper.insertMoreByList(list);
+        System.out.println(i);
     }
 }
