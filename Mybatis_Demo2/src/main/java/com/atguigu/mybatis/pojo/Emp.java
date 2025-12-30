@@ -2,7 +2,9 @@ package com.atguigu.mybatis.pojo;
 
 import org.apache.log4j.Logger;
 
-public class Emp {
+import java.io.Serializable;
+
+public class Emp implements Serializable {
 
     private Integer eid;
 

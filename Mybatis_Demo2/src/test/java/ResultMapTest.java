@@ -1,4 +1,5 @@
 import com.alibaba.druid.sql.dialect.sqlserver.ast.SQLServerOutput;
+import com.atguigu.mybatis.mapper.CacheMapper;
 import com.atguigu.mybatis.mapper.DeptMapper;
 import com.atguigu.mybatis.mapper.DynamicSqlMapper;
 import com.atguigu.mybatis.mapper.EmpMapper;
@@ -6,9 +7,13 @@ import com.atguigu.mybatis.pojo.Dept;
 import com.atguigu.mybatis.pojo.Emp;
 import com.atguigu.mybatis.utils.SqlSessionUtils;
 import jdk.swing.interop.SwingInterOpUtils;
+import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.jupiter.api.Test;
 
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.List;
 
@@ -142,5 +147,48 @@ public class ResultMapTest {
         List<Emp> list = Arrays.asList(emp1, emp2, emp3, emp4, emp5);
         int i = mapper.insertMoreByList(list);
         System.out.println(i);
+    }
+
+    /**
+     * 一级cache的范围是sqlsession  任意一次增删改都会清空缓存
+     */
+    @Test
+    public void test10() {
+        SqlSession sqlSession = SqlSessionUtils.getSqlSession();
+        CacheMapper mapper = sqlSession.getMapper(CacheMapper.class);
+        Emp empById1 = mapper.getEmpById(1);
+        System.out.println(empById1);
+        //mapper.insertEmp(new Emp(null,"qwe",12,"男","11@qq.com"));
+        sqlSession.clearCache();
+        Emp empById2 = mapper.getEmpById(1);
+        System.out.println(empById2);
+    }
+
+    /**
+     * 二级缓存开启的条件
+     * 1 在核心配置文件中，设置全局配置属性cacheEnable=“true”默认为trye
+     * 2 在映射文件中设置标签《cache/>
+     * 3 二级缓存必须在sqlSession关闭火锅提交之后才有效
+     * 4 查询的数据所转换的实体类对象必须实现序列化接口
+     */
+
+    @Test
+    public void test11() {
+        try{
+            InputStream is = Resources.getResourceAsStream("mybatis_config.xml");
+            SqlSessionFactory build = new SqlSessionFactoryBuilder().build(is);
+            SqlSession session1 = build.openSession(true);
+            CacheMapper mapper1 = session1.getMapper(CacheMapper.class);
+            System.out.println(mapper1.getEmpById(1));
+            session1.close();
+            SqlSession session2 = build.openSession(true);
+            CacheMapper mapper2 = session2.getMapper(CacheMapper.class);
+            System.out.println(mapper2.getEmpById(1));
+            session2.close();
+        }
+        catch (Exception e) {
+
+        }
+
     }
 }
