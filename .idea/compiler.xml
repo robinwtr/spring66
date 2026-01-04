@@ -6,18 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spring-resources" />
-        <module name="MyBatis_MBG" />
         <module name="spring-jdbc-tx" />
         <module name="spring-reflect" />
         <module name="spring-ioc" />
+        <module name="SpringMVC-demo1" />
+        <module name="spring-first" />
+        <module name="spring-resources" />
+        <module name="MyBatis_MBG" />
         <module name="spring-junit" />
         <module name="Mybatis_Demo2" />
         <module name="MyBatis" />
         <module name="spring-aop" />
         <module name="MyBatis_Demo1" />
-        <module name="spring-first" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="springMVC-demo2" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
