@@ -21,6 +21,7 @@
         <module>Mybatis_Demo2</module>
         <module>MyBatis_MBG</module>
         <module>SpringMVC-demo1</module>
+        <module>springMVC-demo2</module>
     </modules>
 
     <properties>
