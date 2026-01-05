@@ -12,7 +12,8 @@ public class RequestMappingController {
 
     @RequestMapping(
             value = {"/testRequestMapping", "/test"},
-            method = {RequestMethod.GET, RequestMethod.POST}
+            method = {RequestMethod.GET, RequestMethod.POST},
+            params = {"username"}
     )
     public String success() {
         return "success";
@@ -21,6 +22,7 @@ public class RequestMappingController {
     public String testGetMapping() {
         return "success";
     }
+    //from表单不可以更改请求方式 请求方式只可能是get和post
     @RequestMapping(value = "/testPut",method=RequestMethod.PUT)
     public String testPut(){
         return "success";
