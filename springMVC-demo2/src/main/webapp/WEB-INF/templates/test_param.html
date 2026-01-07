@@ -6,6 +6,16 @@
 </head>
 <body>
 <h1>测试请求参数</h1>
-<a th:href="@{/testServletAPI(username='admin',password='123456')}">使用测试testServletAPI来获取请求参数</a>
+<a th:href="@{/testServletAPI(username='admin',password='123456')}">使用测试testServletAPI来获取请求参数</a><br>
+<a th:href="@{/testServletAPI(username='admin',password='123456')}">使用测试控制器的形参来获取请求参数</a><br>\
+<form th:action="@{/testParam}" method="get">
+    用户名:<input type="text" name="username"><br>
+    密码：<input type="text" name="password"><br>
+    爱好：<input type="checkbox" name="hobby" value="a">a
+    <input type="checkbox" name="hobby" value="b">b
+    <input type="checkbox" name="hobby" value="c">c
+    <input type="checkbox" name="hobby" value="d">d
+    <input type="submit" value="使用测试控制器的形参来获取请求参数">
+</form>
 </body>
 </html>
