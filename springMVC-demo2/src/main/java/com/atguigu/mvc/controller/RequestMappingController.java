@@ -28,4 +28,12 @@ public class RequestMappingController {
         return "success";
     }
 
+    @RequestMapping(
+            value = "/testParamsAndHeaders",
+            params = {"username"}
+    )
+    public String testParamsAndHeaders() {
+        return "success";
+    }
+
 }
