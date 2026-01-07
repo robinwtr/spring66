@@ -3,6 +3,7 @@ package com.atguigu.mvc.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,6 +34,13 @@ public class RequestMappingController {
             params = {"username"}
     )
     public String testParamsAndHeaders() {
+        return "success";
+    }
+
+    //RequestMapping支持路径中的占位符 用路径的方式传递参数 只能通过PathVariable获得
+    @RequestMapping("/testPath/{id}/{username}")
+    public String testPath(@PathVariable("id")Integer id, @PathVariable("username")String username) {
+        System.out.println("id="+id+",username="+username);
         return "success";
     }
 
