@@ -30,3 +30,9 @@ javaBean分两类：
 ###### @RequestMapping注解的位置
 - @RequestMapping标识一个类：设置映射请求的请求路径的初始信息
 - @RequestMapping标识一个方法：设置映射请求路径的具体信息
+
+###### @RequestParam 
+是将请求参数和控制器方法的形参创建映射关系 ，@RequestParam 一共有三个属性
+- value：指定为参数赋值的请求参数的参数名
+- required：设置是否必须传输此请求参数，默认值为true。若设置为true，则当前请求必须传输value所指定的请求参数，若没有传输该请求参数，且没有defaultValue属性，则页面会报400错误：
+- defaultValue：不管required属性值，当value所指定的请求参数没有传输时，默认使用该属性值
