@@ -15,6 +15,7 @@
         <module name="MyBatis_MBG" />
         <module name="spring-junit" />
         <module name="Mybatis_Demo2" />
+        <module name="springMVC_demo3" />
         <module name="MyBatis" />
         <module name="springMVC-demo2" />
         <module name="spring-aop" />
