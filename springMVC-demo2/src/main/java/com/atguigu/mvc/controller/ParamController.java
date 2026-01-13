@@ -39,9 +39,12 @@ public class ParamController {
     }
 
     @RequestMapping("/testBean")
-    public String testBean(User user) {
-        System.out.println("user:"+user);
+    public String testBean(User user, HttpServletRequest request) {
+        System.out.println("Current Encoding: " + request.getCharacterEncoding());
+        System.out.println(user.getUsername());
+        System.out.println("user:" + user);
         return "success";
+
     }
 
 }
