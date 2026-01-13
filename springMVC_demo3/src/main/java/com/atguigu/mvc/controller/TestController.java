@@ -13,4 +13,9 @@ public class TestController {
         return "index";
     }
 
+    @RequestMapping("/vieww")
+    public String vieww(){
+        return "vieww";
+    }
+
 }
