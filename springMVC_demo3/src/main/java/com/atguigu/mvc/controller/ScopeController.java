@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 import java.util.Objects;
 
@@ -45,6 +46,11 @@ public class ScopeController {
      public String testModelMap(ModelMap modelMap) {
           modelMap.put("testRequestScope", "Hello,ModelMap");
           System.out.println(modelMap.getClass().getName());
+          return "success";
+     }
+     @RequestMapping("/testSession")
+     public String testSession(HttpSession session) {
+          session.setAttribute("testSessionScope", "Hello,Session");
           return "success";
      }
 }
