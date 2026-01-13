@@ -36,3 +36,15 @@ javaBean分两类：
 - value：指定为参数赋值的请求参数的参数名
 - required：设置是否必须传输此请求参数，默认值为true。若设置为true，则当前请求必须传输value所指定的请求参数，若没有传输该请求参数，且没有defaultValue属性，则页面会报400错误：
 - defaultValue：不管required属性值，当value所指定的请求参数没有传输时，默认使用该属性值
+
+###### Model、ModelMap、Map的关系
+model,modelmap,map类型的参数本质上都是BindingAwareModelMap类型的
+
+```java
+import java.util.LinkedHashMap;
+
+public interface Model {}
+public class ModelMap extends LinkedHashMap<String,Object>{}
+public class ExtendedModelMap extends ModelMap implements Model{}
+public class BindingAwareModelMap extends ExtendedModelMap{}
+```
