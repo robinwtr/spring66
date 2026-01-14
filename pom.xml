@@ -23,6 +23,7 @@
         <module>SpringMVC-demo1</module>
         <module>springMVC-demo2</module>
         <module>springMVC_demo3</module>
+        <module>springMVC-demo4</module>
     </modules>
 
     <properties>

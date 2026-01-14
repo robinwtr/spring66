@@ -10,6 +10,7 @@
         <module name="spring-reflect" />
         <module name="spring-ioc" />
         <module name="SpringMVC-demo1" />
+        <module name="springMVC-demo4" />
         <module name="spring-first" />
         <module name="spring-resources" />
         <module name="MyBatis_MBG" />
