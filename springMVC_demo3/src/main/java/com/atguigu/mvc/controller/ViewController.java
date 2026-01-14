@@ -16,4 +16,8 @@ public class ViewController {
     public String testForward() {
         return "forward:/testThymeleafView";
     }
+    @RequestMapping("/testRedirect")
+    public String testRedirect() {
+        return "redirect:/testThymeleafView";
+    }
 }

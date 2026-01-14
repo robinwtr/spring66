@@ -48,3 +48,19 @@ public class ModelMap extends LinkedHashMap<String,Object>{}
 public class ExtendedModelMap extends ModelMap implements Model{}
 public class BindingAwareModelMap extends ExtendedModelMap{}
 ```
+###### 转发和重定向的区别
+
+| 特性       | 转发（Forward）                          | 重定向（Redirect）                           |
+| ---------- | ---------------------------------------- | -------------------------------------------- |
+| 发生位置   | 服务器端                                 | 客户端/浏览器端                              |
+| 请求次数   | 1次                                      | 2次                                          |
+| 浏览器地址 | 不变（显示第一次请求的URL）              | 改变（显示跳转后的新URL）                    |
+| 数据共享   | 共享request域中的数据                    | 不共享request域中的数据（数据丢失）          |
+| 跳转范围   | 只能在当前web应用内跳转                  | 可以跳转到任何URL（包括google，baidu等外部） |
+| 核心代码   | request.getRequestDispatcher().forward() | response.sendRedirect()                      |
+| 效率       | 较高（服务器内部直接流转）               | 较低（多了一次网络往返）                     |
+
+**总结**
+
+- 查询/读取数据（Get）：通常是采用转发（forword），为了带数据方便
+- 增删改（Post/Put/Delete）：处理完之后，必须使用重定向，为了防止重复操作
