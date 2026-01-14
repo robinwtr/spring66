@@ -64,3 +64,12 @@ public class BindingAwareModelMap extends ExtendedModelMap{}
 
 - 查询/读取数据（Get）：通常是采用转发（forword），为了带数据方便
 - 增删改（Post/Put/Delete）：处理完之后，必须使用重定向，为了防止重复操作
+
+
+###### RESTFul简介
+REST: Representational State Transfer, 表现层资源状态转移
+具体来说，就是HTTP协议里面，四个表示操作方式的动词：GET,POST,PUT和 DELETE
+- GET用来获取资源
+- POST用来新建资源
+- PUT用来更新资源
+- DELETE用来删除资源
