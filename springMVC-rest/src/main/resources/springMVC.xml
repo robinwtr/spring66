@@ -10,7 +10,8 @@
                            http://www.springframework.org/schema/mvc
                            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="com.atguigu.mvc.controller"></context:component-scan>
+    <context:component-scan base-package="com.atguigu.rest"></context:component-scan>
+
 
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
