@@ -27,6 +27,7 @@
     <!--开启mvc的注解驱动-->
     <mvc:annotation-driven></mvc:annotation-driven>
 
+    <!--开放对静态资源的访问-->
     <mvc:default-servlet-handler/>
 
     <bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
