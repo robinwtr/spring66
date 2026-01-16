@@ -13,17 +13,39 @@
     <context:component-scan base-package="com.atguigu.mvc.controller"></context:component-scan>
 
 
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
     <!--mvc的视图控制器-->
-    <!-- <mvc:view-controller path="/" view-name="index"></mvc:view-controller>-->
+    <mvc:view-controller path="/" view-name="index"></mvc:view-controller>
+
     <!--开启mvc的注解驱动-->
     <mvc:annotation-driven></mvc:annotation-driven>
 
+    <!--开放对静态资源的访问-->
     <mvc:default-servlet-handler/>
 
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/templates/"></property>
-        <property name="suffix" value=".jsp"></property>
+    <bean id="viewResolver" class="org.thymeleaf.spring5.view.ThymeleafViewResolver">
+        <property name="order" value="1"/>
+        <property name="characterEncoding" value="UTF-8"/>
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <property name="templateEngine">
+            <bean class="org.thymeleaf.spring5.SpringTemplateEngine">
+                <property name="templateResolver">
+                    <bean class="org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver">
+                        <property name="prefix" value="/WEB-INF/templates/"/>
+                        <property name="suffix" value=".html"/>
+                        <property name="templateMode" value="HTML"/>
+                        <property name="characterEncoding" value="UTF-8"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
     </bean>
 
 </beans>
