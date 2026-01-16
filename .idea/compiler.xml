@@ -21,6 +21,7 @@
         <module name="springMVC-demo2" />
         <module name="spring-aop" />
         <module name="MyBatis_Demo1" />
+        <module name="springMVC-rest" />
       </profile>
     </annotationProcessing>
   </component>
