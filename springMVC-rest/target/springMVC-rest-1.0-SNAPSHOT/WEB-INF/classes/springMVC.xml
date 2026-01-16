@@ -23,6 +23,7 @@
 
     <!--mvc的视图控制器-->
     <mvc:view-controller path="/" view-name="index"></mvc:view-controller>
+    <mvc:view-controller path="/toAdd" view-name="employee_add"></mvc:view-controller>
 
     <!--开启mvc的注解驱动-->
     <mvc:annotation-driven></mvc:annotation-driven>
