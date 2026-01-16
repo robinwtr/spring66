@@ -1,6 +1,7 @@
 package com.atguigu.mvc.controller;
 
 
+import com.atguigu.mvc.bean.User;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -40,4 +41,18 @@ public class HttpController {
         return "success";
     }
 
+
+    @RequestMapping("/testResponseUser")
+    @ResponseBody
+    public User testResponseUser(){
+        User user = new User(1001,"dasd","321312","nan",21,"123@qq.com");
+        return user;
+    }
+
+    @RequestMapping("/testAxios")
+    @ResponseBody
+    public String testAxios(String username, String password){
+        System.out.println(username+" "+password);
+        return "hello.ajax";
+    }
 }

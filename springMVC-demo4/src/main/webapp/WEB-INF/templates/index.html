@@ -18,7 +18,33 @@
     <input type="submit" name="测试testRequestEntity">
 </form>
 
-<a th:href="@{/testResponse}">通过servletAPI的response对象响应浏览器数据</a>
-<a th:href="@{/testResponseBody}">通过ResponseBody相应浏览器数据</a>
+<a th:href="@{/testResponse}">通过servletAPI的response对象响应浏览器数据</a><br>
+<a th:href="@{/testResponseBody}">通过ResponseBody相应浏览器数据</a><br>
+<a th:href="@{/testResponseUser}">通过ResponseBody相应浏览器对象</a><br>
+<div id="app">
+    <a th:href="@{/testAxios}">测试ajax</a>
+</div>
+<script type="text/javascript" th:src="@{/static/js/vue.js}"></script>
+<script type="text/javascript" th:src="@{/static/js/axios.min.js}"></script>
+<script type="text/javascript">
+    new Vue({
+        el:"#app",
+        methods:{
+            testAxios:function (event){
+                axios({
+                    method:"post",
+                    url:event.target.href,
+                    params:{
+                        username:"admin",
+                        password:"123456"
+                    }
+                }).then(function (response){
+                    alert(response.data);
+                })
+                event.preventDefault();
+            }
+        }
+    });
+</script>
 </body>
 </html>
